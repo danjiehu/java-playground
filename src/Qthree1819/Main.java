@@ -30,6 +30,7 @@ public class Main {
 		
 		// serialize the list
 		bc.serialize();
+		bc.deserialize();
 		
 	} // end of main
 	

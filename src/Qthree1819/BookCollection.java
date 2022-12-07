@@ -41,8 +41,32 @@ public class BookCollection {
 			os.writeObject(bookList);
 			
 			os.close();
+			
+			System.out.printf("\nfile serialized\n");
 		}
 		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deserialize() {
+		try {
+			FileInputStream fileStream = new FileInputStream("src/Qthree1819/bookCollection.dat");
+			
+			ObjectInputStream os = new ObjectInputStream(fileStream);
+			
+			@SuppressWarnings("unchecked")
+			List<Book> bookList = (List<Book>)os.readObject();
+					
+			System.out.printf("\nfile deserialized\n");
+			
+			for (Book book : bookList) {
+				System.out.println(book.toString());
+			}
+			
+			os.close();
+		} 
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
