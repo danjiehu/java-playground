@@ -19,8 +19,8 @@ public class BookCollection {
 		return bookList;
 	}
 	
-	public void addBooks(Book b) {
-		 bookList.add(b);
+	public boolean addBooks(Book b) {
+		return  bookList.add(b);
 	}
 	
 //	public boolean addBooks(Book b) {
@@ -56,11 +56,11 @@ public class BookCollection {
 			ObjectInputStream os = new ObjectInputStream(fileStream);
 			
 			@SuppressWarnings("unchecked")
-			List<Book> bookList = (List<Book>)os.readObject();
+			List<Book> bl = (List<Book>)os.readObject();
 					
 			System.out.printf("\nfile deserialized\n");
 			
-			for (Book book : bookList) {
+			for (Book book : bl) {
 				System.out.println(book.toString());
 			}
 			

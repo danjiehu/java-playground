@@ -72,9 +72,9 @@ public class Main {
 		
 		try 
 		{
-			File file = new File(filename);
+			// File file = new File(filename);
 			
-			FileReader fileReader = new FileReader(file);
+			FileReader fileReader = new FileReader(filename);
 			
 			BufferedReader reader = new BufferedReader(fileReader);
 			
@@ -82,9 +82,11 @@ public class Main {
 			
 			System.out.println("The content below is read from file " + filename + ": ");
 			
-			while ( (line = reader.readLine()) != null ) {
-				System.out.println(line);
-			}
+			System.out.println(reader.read());
+			
+		while ( (line = reader.readLine()) != null ) {
+			System.out.println(line);
+		}
 			
 			reader.close();
 		} 

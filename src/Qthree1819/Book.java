@@ -29,7 +29,6 @@ public abstract class Book implements Serializable {
 		this.title = title;
 		isbn.setISBN(isbnInput);
 	}
-	// Book(String, String) - I'm not sure what the second String is supposed to be...
 	
 	// member methods
 	public String getTitle() {

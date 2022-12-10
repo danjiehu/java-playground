@@ -3,7 +3,6 @@ package Qthree1819;
 // import java.util.*;
 // import java.io.*;
 
-
 // 1. serialize
 // 2. deserialize (added by myself)
 // 3. abstract vs. concrete class
