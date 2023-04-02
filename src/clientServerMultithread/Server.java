@@ -6,27 +6,6 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-//public class Server {
-//    public static void main(String[] args) {
-//        try {
-//            // Create server socket
-//            ServerSocket serverSocket = new ServerSocket(8000);
-//
-//            while (true) {
-//                // Accept incoming connections from clients
-//                Socket clientSocket = serverSocket.accept();
-//
-//                // Create new client handler thread for each client
-//                Thread thread = new Thread(new ClientHandler(clientSocket));
-//                thread.start();
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//}
-
 public class Server {
     public static void main(String[] args) {
         ServerSocket serverSocket = null;
@@ -84,15 +63,23 @@ class ClientHandler implements Runnable {
                 if (request.equals("Date")) {
                     java.util.Date date = new java.util.Date();
                     out.writeObject(date);
+                    out.flush(); // Send response to client
                 }
 
                 // Create Calendar object and send to client
                 else if (request.equals("Calendar")) {
                     java.util.Calendar calendar = java.util.Calendar.getInstance();
                     out.writeObject(calendar);
+                    out.flush(); // Send response to client
+                }
+
+                // Wait for acknowledgement from client
+                String ack = (String) in.readObject();
+                if (!ack.equals("ACK")) {
+                    throw new Exception("Invalid acknowledgement message");
                 }
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
