@@ -21,6 +21,7 @@ class Num {
 		// if value is already put, asking the thread executing this function "put()" to halt execution being notified by another thread
 		
 		// !! wait() and notify() methods is called on the same object, and this is why it doesn't need to specify which thread to notify or wait because it is telling WHATEVER thread that is utilizing this object function (that modifies object state) to half or continue
+		// i.e. whether a thread should be halt or continued should be fundamentally depend on the object state, that's how we make sure that not more than one threading is modifying the same object at the same time
 		// can use "wait()" directly, but "this.wait()" just make it clearer that we're asking whatever thread that is modifying THIS object to WAIT
 		while(ifPut) {
 			try { this.wait(); } catch(Exception e) {}
