@@ -2,7 +2,6 @@ package boundedType;
 
 public class Driver {
 	
-	
 	public static void main(String[] args) {
 	    classDemo<Double> arr = new classDemo<>();
 	    arr.set(4.0);
@@ -11,7 +10,8 @@ public class Driver {
 	
 	
 	// The type parameter T should not be bounded by the final type Double. Final types cannot be further extended
-	static class classDemo <T extends Double>{
+	// static class classDemo <T extends Double>{
+	static class classDemo <T extends Number>{
 		private T a;
 		
 		public void set(T a) {
